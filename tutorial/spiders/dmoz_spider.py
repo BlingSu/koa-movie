@@ -6,12 +6,12 @@ class DmozSpider(scrapy.Spider):
     name = "dmoz"
     allowed_domains = ["dmoz.org"]
     start_urls = [
-        'http://www.zwdu.com/book/8634/'
+        "http://www.zwdu.com/book/8634/"
     ]
 
     def parse(self, response):
-        titles = response.xpath('//div/h1/text()').extract()
-        for title in titles:
+        for book in response.xpath('//*[@id="info"]'):
           item = DmozItem()
-          item['title'] = title
+          item['title'] = book.xpath('//*[@id="info"]/h1/text()').extract()[0]
+          item['name'] = book.xpath('//*[@id="info"]/p[1]/text()').extract()[0]
           yield item
