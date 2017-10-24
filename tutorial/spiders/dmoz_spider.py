@@ -2,16 +2,15 @@ import scrapy
 import random
 import math
 import re
+import url
 
 from tutorial.items import DmozItem
 
 class DmozSpider(scrapy.Spider):
     name = "dmoz"
     allowed_domains = ["dmoz.org"]
-    start_urls = [
-        "http://www.zwdu.com/book/8634/",
-        "http://www.zwdu.com/book/7718/"
-    ]
+
+    start_urls = url.url
     def parse(self, response):
         print self
         for book in response.xpath('//*[@id="wrapper"]/div[4]'):
