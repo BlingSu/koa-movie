@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/angelasubi/koa-movie#readme",
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "koa": "^2.5.1",
     "koa-views": "^6.1.4",
     "mongoose": "^5.0.17",
