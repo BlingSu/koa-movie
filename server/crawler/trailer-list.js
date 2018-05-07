@@ -1,12 +1,13 @@
 const puppeteer = require('puppeteer')
-const url = 'https://movie.douban.com/tag/#/?sort=R&range=6,10&tags='
+
+const url = `https://movie.douban.com/tag/#/?sort=R&range=6,10&tags=`
 
 const sleep = time => new Promise(resolve => {
   setTimeout(resolve, time)
 })
 
 ;(async () => {
-  console.log(`Start visit the target page`)
+  console.log('Start visit the target page')
 
   const browser = await puppeteer.launch({
     args: ['--no-sandbox'],
@@ -32,13 +33,13 @@ const sleep = time => new Promise(resolve => {
     var items = $('.list-wp a')
     var links = []
 
-    if (items .length >= 1) {
+    if (items.length >= 1) {
       items.each((index, item) => {
         let it = $(item)
         let doubanId = it.find('div').data('id')
         let title = it.find('.title').text()
         let rate = Number(it.find('.rate').text())
-        let poster = it.find('img').attr('src').replace('s_ration', 'l_ration')
+        let poster = it.find('img').attr('src').replace('s_ratio', 'l_ratio')
 
         links.push({
           doubanId,
@@ -48,6 +49,7 @@ const sleep = time => new Promise(resolve => {
         })
       })
     }
+
     return links
   })
 
