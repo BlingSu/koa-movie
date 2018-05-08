@@ -1,21 +1,21 @@
 const Router = require('koa-router')
-const {resolve} = require('path')
+const { resolve } = require('path')
 const _ = require('lodash')
 const glob = require('glob')
 
 const symbolPrefix = Symbol('prefix')
 const routerMap = new Map()
 
-const isArray = c =>_.isArray(c) ? c : [c]
+const isArray = c => _.isArray(c) ? c : [c]
 
 export class Route {
-  constructor(app, apiPath) {
+  constructor (app, apiPath) {
     this.app = app
     this.apiPath = apiPath
     this.router = new Router()
   }
 
-  init() {
+  init () {
     glob.sync(resolve(this.apiPath, './**/*.js')).forEach(require)
 
     for (let [conf, controller] of routerMap) {
@@ -27,7 +27,7 @@ export class Route {
     }
 
     this.app.use(this.router.routes())
-    this.app.use(this.router.all())
+    this.app.use(this.router.allowedMethods())
   }
 }
 
