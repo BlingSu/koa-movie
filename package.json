@@ -4,7 +4,8 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "rm -rf dist && rm -rf .cache && NODE_ENV=development nodemon ./start.js",
+    "build": "parcel build src/index.html --no-cache -d dist --public-url /"
   },
   "repository": {
     "type": "git",
@@ -37,7 +38,7 @@
     "request-promise-native": "^1.0.5"
   },
   "devDependencies": {
-    "autoprefixer": "^7.2.5",
+    "autoprefixer": "^7.2.6",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -48,7 +49,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "cssnext": "^1.8.4",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.9.0",
     "parcel-bundler": "^1.5.1"
   }
 }
