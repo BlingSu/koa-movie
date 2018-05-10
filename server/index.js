@@ -16,7 +16,6 @@ const useMiddlewares = (app) => {
     ))(MIDDLEWARES)
 }
 
-
 ;(async () => {
   await connect()
 

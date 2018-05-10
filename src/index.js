@@ -1,8 +1,12 @@
-import './assets/common.sass'
-function change() {
-  window.$('#app').html('xxx')
-}
+import React from 'react'
+import {render} from 'react-dom'
+import {
+  BrowserRouter
+} from 'react-router-dom'
+import App from './app'
 
-setTimeout(function(){
-  change()
-}, 2000)
+const rootElement = document.getElementById('app')
+
+render(<BrowserRouter>
+    <App />
+  </BrowserRouter>, rootElement)
