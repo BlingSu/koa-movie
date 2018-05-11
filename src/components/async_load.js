@@ -30,7 +30,7 @@ export default (loadComponent, placeholder = '正在加载中') => {
 
       return (
         Child
-          ? <Child {this.props} />
+          ? <Child {...this.props} />
           : placeholder
       )
     }

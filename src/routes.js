@@ -4,13 +4,13 @@ export default [
   {
     name: '首页',
     icon: 'home',
-    path: '/'
+    path: '/',
     component: AC(() => import('./views/home'))
   },
   {
     name: '详情页',
     icon: 'home',
-    path: '/detail/:id'
+    path: '/detail/:id',
     component: AC(() => import('./views/movie/detail'))
   }
 ]
